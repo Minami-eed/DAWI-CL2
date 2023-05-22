@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:fragment="head">
+        <title>Mantenimiento de Libros</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    </head>
+    <body>
+        <main>
+            <section style="width: 65%;
+                            float: left;">
+                <h1>Mantenimiento de Libros</h1>
+                
+                <form action="@{guardar}" th:object="${libro}" method="post">
+                    <div class="form-group">
+                        <label for="inputTitulo">Titulo</label>
+                        <input th:field="*{idLibro}" class="form-control" id="inputTitulo" placeholder="Ingrese el Titulo del Libro">
+                    </div>
+                </form>
+            </section>
+        </main>
+        <footer>
+
+        </footer>
+    </body>
+</html>
