@@ -7,7 +7,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -31,8 +30,6 @@ public class Libro {
 
     @Column(name = "precio")
     @NotEmpty
-    @DecimalMin(value = "0.00", inclusive = false, message = "El valor debe ser mayor que 0")
-    @Digits(integer = Integer.MAX_VALUE, fraction = 2, message = "La parte Decimal debe tener exactamente 2 digitos")
     private double precio;
 
     @Column(name = "cantEjemplares")

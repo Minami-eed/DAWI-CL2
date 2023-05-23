@@ -1,4 +1,4 @@
-package com.cibertec.dawi_cl2_quispe_edson.Interface;
+package com.cibertec.dawi_cl2_quispe_edson.Repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
