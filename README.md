@@ -15,8 +15,9 @@
 ---
 # PROBLEMA
 Usted como desarrollador se le asignado la funcionalidad de **mantenimiento de Libros**, para ello se tiene el siguiente prototipo y modelo de datos:
-![Mantenimiento de Libros](/public/mantenimiento-libros.png)
-![Base de Datos](/public/database-libros.png)
+   ![Mantenimiento de Libros](/public/mantenimiento-libros.png)
+             
+   ![Base de Datos](/public/database-libros.png)
 ---
 ## PREGUNTA 1
 * Realiza el proyecto Maven **DAWI_CL2_XXX** con los archivos necesarios en el archivo pom.xml para el desarrollo
