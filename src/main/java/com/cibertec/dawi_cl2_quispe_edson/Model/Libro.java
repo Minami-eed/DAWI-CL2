@@ -6,53 +6,47 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Digits;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "libro")
 public class Libro {
 
     @Id
-    @Column(name = "idLibro")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idLibro;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idlibro")
+    private int idlibro;
 
+    @Pattern(regexp = "^[a-zA-Z]{1,45}$", message = "Este campo solo debe contener letras y un máximo de 45 caracteres")
     @Column(name = "titulo")
-    @NotBlank
-    @Size(max = 45, message = "El campo debe tener como maximo 45 caracteres")
     private String titulo;
 
+    @Pattern(regexp = "^\\d+(?:\\.\\d(1,2))?$", message = "este campo solo debe contener 1 o 2 dígitos después del punto decimal")
     @Column(name = "precio")
-    @NotEmpty
-    private double precio;
+    private String precio;
 
-    @Column(name = "cantEjemplares")
-    @NotEmpty
-    @Min(1)
-    private int cantEjemplares;
+    @Pattern(regexp = "[0-9]+", message = "Este campo solo debe contener números positivos")
+    @Column(name = "cantejemplares")
+    private String cantejemplares;
 
+    @Pattern(regexp = "^[a-zA-Z]{1,45}$", message = "Este campo solo debe contener letras y un máximo de 45 caracteres")
     @Column(name = "origen")
-    @NotBlank
-    @Size(max = 45, message = "El campo debe tener como maximo 45 caracteres")
-    @Pattern(regexp = "^[\\p{L}]+$")
     private String origen;
 
-    @JoinColumn(name = "idTema")
-    @Digits(integer = 4, fraction = 0)
-    private int idTema;
+    @ManyToOne
+    @JoinColumn(name = "idtema")
+    @NotNull(message = "Debes seleccionar un tema")
+    private Tema tema;
 
-    public int getIdLibro() {
-        return idLibro;
+    public int getIdlibro() {
+        return idlibro;
     }
 
-    public void setIdLibro(int idLibro) {
-        this.idLibro = idLibro;
+    public void setIdlibro(int idlibro) {
+        this.idlibro = idlibro;
     }
 
     public String getTitulo() {
@@ -63,20 +57,20 @@ public class Libro {
         this.titulo = titulo;
     }
 
-    public double getPrecio() {
+    public String getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(String precio) {
         this.precio = precio;
     }
 
-    public int getCantEjemplares() {
-        return cantEjemplares;
+    public String getCantejemplares() {
+        return cantejemplares;
     }
 
-    public void setCantEjemplares(int cantEjemplares) {
-        this.cantEjemplares = cantEjemplares;
+    public void setCantejemplares(String cantejemplares) {
+        this.cantejemplares = cantejemplares;
     }
 
     public String getOrigen() {
@@ -87,17 +81,17 @@ public class Libro {
         this.origen = origen;
     }
 
-    public int getIdTema() {
-        return idTema;
+    public Tema getTema() {
+        return tema;
     }
 
-    public void setIdTema(int idTema) {
-        this.idTema = idTema;
+    public void setTema(Tema tema) {
+        this.tema = tema;
     }
 
     @Override
     public String toString() {
-        return "Libro [idLibro=" + idLibro + ", titulo=" + titulo + ", precio=" + precio + ", cantEjemplares="
-                + cantEjemplares + ", origen=" + origen + ", idTema=" + idTema + "]";
+        return "Libro [idlibro=" + idlibro + ", titulo=" + titulo + ", precio=" + precio + ", cantejemplares="
+                + cantejemplares + ", origen=" + origen + ", tema=" + tema + "]";
     }
 }

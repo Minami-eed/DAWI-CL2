@@ -1,0 +1,34 @@
+create database CL2_QUISPE;
+
+use CL2_QUISPE;
+
+create table tema(
+	idTema int not null primary key,
+    nombre varchar(45)
+);
+
+create table libro(
+	idlibro int not null primary key,
+    titulo varchar(45),
+    precio double,
+    cantEjemplares int,
+    origen varchar(45),
+    idTema int,
+    foreign key (idTema) references tema (idTema) 
+);
+
+insert into tema (idTema, nombre) values
+(1, 'Informática'),
+(2, 'Diseño'),
+(3, 'Redes'),
+(4, 'Software');
+
+insert into libro (idLibro, titulo, precio, cantEjemplares, origen, idTema) values
+(1,'Networking', 125.70, 5, 'Propio', 4),
+(2, 'Java', 85.00, 6, 'Donación', 1),
+(3, 'Ilustrador', 165.99, 4, 'Donación', 2),
+(4, 'Phyton', 120.00, 15, 'Propio', 1);
+
+SELECT * FROM tema;
+
+SELECT * FROM libro;
